@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+<h2>Mantenimiento de Roles</h2>
+
+<table border="1" width="100%" class="gridtable">
+    <caption>Lista de Roles</caption>
+    <colgroup>
+        <col width="80"/>
+        <col/>
+        <col width="80"/>
+        <col width="80"/>
+    </colgroup>
+    <thead>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+    </thead>
+    <tbody>
+    {% for rol in roles %}
+        <tr>
+            <td>{{ rol.id }}</td>
+            <td>{{ rol.nombre }}</td>
+            <td><a href="editar/{{ rol.id }}">Editar</a></td>
+            <td><a href="eliminar/{{ rol.id }}">Eliminar</a></td>
+        </tr>
+    {% endfor %}
+   </tbody>
+</table>
+
+<br/>
+
+<a href="registrar/" class="btn btn-default">Nuevo</a>
+
+{% endblock %}

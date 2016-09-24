@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+<form action="{{ path('app_usuarios_registrar') }}" method="POST" class="ligthform">
+    <fieldset>
+        <legend>Registro de Usuario</legend>
+        <label>Username</label><input type="text" name="username" maxlength="20"/><br/>
+        <label>Password</label><input type="password" name="password" maxlength="40"/><br/>
+        <label>Nombres</label><input type="text" name="nombres" maxlength="100"/><br/>
+        <label>Email</label><input type="email" name="email" maxlength="100"/><br/>
+        <label>Rol</label><select name="roles_id">
+            {% for rol in roles %}
+                <option value="{{ rol.id }}">{{ rol.nombre }}</option>
+            {% endfor %}
+        </select><br/>
+        <input type="submit" value="Guardar"/>
+    </fieldset>
+</form>
+
+<br/>
+
+<a href="{{ path('app_usuarios_index') }}" class="btn btn-default">&lt;&lt; Regresar</a>
+
+{% endblock %}

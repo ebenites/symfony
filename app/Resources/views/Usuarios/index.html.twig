@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+<?php //var_dump($usuarios) ?>
+<table border="1" width="100%" class="gridtable">
+    <caption>Mantenimiento de Usuarios</caption>
+    <colgroup>
+        <col width="80"/>
+        <col/>
+        <col/>
+        <col/>
+        <col/>
+        <col width="80"/>
+        <col width="80"/>
+    </colgroup>
+    <thead>
+        <th>ID</th>
+        <th>USUARIO</th>
+        <th>ROL</th>
+        <th>NOMBRES</th>
+        <th>EMAIL</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+    </thead>
+    <tbody>
+    {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.username }}</td>
+            <td>
+                {% if usuario.rol != null %}
+                    {{ usuario.rol.nombre }}
+                {% endif %}
+            </td>
+            <td>{{ usuario.nombres }}</td>
+            <td>{{ usuario.email }}</td>
+            <td><a href="{{ path('app_usuarios_editar', { 'id' : usuario.id }) }}">Editar</a></td>
+            <td><a href="{{ path('app_usuarios_eliminar', { 'id' : usuario.id }) }}">Eliminar</a></td>
+        </tr>
+    {% endfor %}
+   </tbody>
+</table>
+
+<br/>
+
+<a href="{{ path('app_usuarios_registrar') }}" class="btn btn-default">Nuevo</a>
+
+{% endblock %}
